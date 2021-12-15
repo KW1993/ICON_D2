@@ -2,8 +2,7 @@
 Get icon d2 data 
 
 """
-This script is modified from :https://github.com/nens/incubed-wam/blob/master/scripts/uploadICON.py for ICON EU data which made by Martijn.Krol
-Kuan-wei.chen later on modified it for ICON D2 data.
+This script is modified from :https://github.com/nens/incubed-wam/blob/master/scripts/uploadICON.py for ICON EU data which made by Martijn.Krol, and Kuan-wei.chen later on modified it for ICON D2 data.
 
 This script only focus on tot_prec for icon d2 and the following changes
 

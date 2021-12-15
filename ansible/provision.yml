@@ -1,0 +1,32 @@
+
+- name: provision server to prepare for the actual deployment
+  hosts: all
+  become: yes
+  tasks:
+
+    - name: "Add user 'buildout' and disable its password"
+      user: name=buildout password='' state=present shell="/bin/bash" groups="docker"
+
+    - name: "Add maintainers' ssh keys so they can log in as user buildout."
+      authorized_key: user=buildout key=https://github.com/{{ item }}.keys
+      with_items:
+        - reinout
+        - ivarlokhorst
+        - mdkrol
+        - ivanestradadewagt
+
+    - name: "Install various packages"
+      apt:
+        name:
+          - python3
+          - python3-pip
+          - docker-compose
+        state: latest
+
+    - name: "Create dir inside /srv for the checkout"
+      file:
+        path: /srv/{{ project_name }}
+        state: directory
+        mode: 0755
+        owner: buildout
+        group: buildout

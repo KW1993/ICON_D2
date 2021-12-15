@@ -1,0 +1,7 @@
+*~
+ansible/*.retry
+*.log
+*.pyc
+localsecret.py
+data/ICON/*
+data/ICON_daily/*

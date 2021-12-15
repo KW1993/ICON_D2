@@ -1,0 +1,27 @@
+---
+- name: deploy new version of the project to the server
+  hosts: all
+  remote_user: buildout
+  tasks:
+    - name: "Checkout correct version from github"
+      git:
+        accept_hostkey: yes
+        dest: /srv/{{ project_name }}
+        repo: "git@github.com:nens/taiwan-iot-data-task.git"
+        version: "master"
+
+    - name: "Stop docker"
+      shell:
+        cmd: "docker-compose stop"
+        chdir: /srv/{{ project_name }}
+
+    - name: "Build docker"
+      shell:
+        cmd: "docker-compose build"
+        chdir: /srv/{{ project_name }}
+
+    - name: "taiwan-iot-data-task"
+      cron:
+        name: "taiwan-iot-data-task V0"
+        minute: "*/10"
+        job: "cd /srv/{{ project_name }} && docker-compose run --rm app python rainstation_new.py"

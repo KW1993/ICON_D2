@@ -1,0 +1,11 @@
+# Note: gdal is installed in the docker with apt-get.
+bs4
+gdal
+lxml
+numpy
+pandas
+requests
+dfply
+geojson
+shapely
+rasterio

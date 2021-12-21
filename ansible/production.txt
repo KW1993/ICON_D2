@@ -2,4 +2,4 @@
 p-project-task-d1.external-nens.local
 
 [task:vars]
-project_name = sturen_op_eigen_opgewekte_energie_hhnk_v0112_1
+project_name = upload_icon_d2

@@ -7,7 +7,7 @@
       git:
         accept_hostkey: yes
         dest: /srv/{{ project_name }}
-        repo: "git@github.com:nens/taiwan-iot-data-task.git"
+        repo: ssh://git@github.com/KW1993/ICON_D2.git
         version: "master"
 
     - name: "Stop docker"
@@ -20,8 +20,9 @@
         cmd: "docker-compose build"
         chdir: /srv/{{ project_name }}
 
-    - name: "taiwan-iot-data-task"
+    - name: "UPLOAD ICON D2 PRECP"
       cron:
-        name: "taiwan-iot-data-task V0"
-        minute: "*/10"
-        job: "cd /srv/{{ project_name }} && docker-compose run --rm app python rainstation_new.py"
+        name: "ICON D2 task"
+        minute: "48"
+        hour: "*/6"
+        job: "cd /srv/{{ project_name }} && docker-compose run --rm script python3 scripts/uploadICON.py"

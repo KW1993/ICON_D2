@@ -1,0 +1,7 @@
+{
+  "python.defaultInterpreterPath": "D:\\vs_work\\work_env\\Scripts\\python.exe",
+  "python.venvPath": "D:\\vs_work\\work_env",
+  "python.terminal.activateEnvironment": true, // 自動啟動環境
+  "python.linting.pylintEnabled": true, // 需要 pip install pylint
+  "python.linting.enabled": true
+}
